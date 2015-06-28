@@ -68,27 +68,13 @@ namespace AIRLab.CA.Tree.Tools
                 return (T)formatter.Deserialize(stream);
             }
         }
-
-        public static T Clone<T>(this T source) 
-            where T : ICloneable
-        {
-            return (T)source.Clone();
-        }
-
+        
         public static string CleanTypeName(this Type type)
         {
             var name = type.Name;
             return !type.IsGenericType
                        ? name
                        : name.Remove(name.IndexOf('`'));
-        }
-
-        public static void AddRange<TKey, TValue>(this Dictionary<TKey, TValue> source, Dictionary<TKey, TValue> collection)
-        {
-            collection
-                .Where(item => !source.ContainsKey(item.Key))
-                .ToList()
-                .ForEach(item => source.Add(item.Key, item.Value));
         }
     }
 }

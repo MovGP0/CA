@@ -4,7 +4,7 @@
   <Deployment enabled="false" />
   <Execution>
     <TestTypeSpecific />
-    <AgentRule name="Execution Agents">
-    </AgentRule>
+    <AgentAxiom name="Execution Agents">
+    </AgentAxiom>
   </Execution>
 </TestSettings>

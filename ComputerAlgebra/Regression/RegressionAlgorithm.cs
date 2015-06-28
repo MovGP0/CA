@@ -8,7 +8,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using AIRLab.CA.Tree.Nodes;
+using AIRLab.CA.Nodes;
 using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA.Regression
@@ -16,10 +16,10 @@ namespace AIRLab.CA.Regression
     /// <summary>
     /// Implementatuin of simple linear regression algorithm
     /// </summary>
-    public class RegressionAlgorithm
+    public sealed class RegressionAlgorithm
     {
-        public INode Formula { get; private set; }
-        public List<double> InConstant { get; private set; }
+        public INode Formula { get; }
+        public List<double> InConstant { get; }
         public int CurrentIteration { get; private set; }
         public double ApproximationError { get; private set; }
 
@@ -130,7 +130,7 @@ namespace AIRLab.CA.Regression
 
             for (var c = _index - InConstant.Count; c < _index; c++)
             {
-                var funcDiff = CA.ComputerAlgebra.Differentiate(Formula, c).ComplileDelegate<double>();
+                var funcDiff = ComputerAlgebra.Differentiate(Formula, c).ComplileDelegate<double>();
                 double step = 0;
 
                 for (var i = 0; i < _inSamples.Count; i++)

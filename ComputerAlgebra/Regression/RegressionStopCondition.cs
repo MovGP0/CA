@@ -9,7 +9,7 @@ namespace AIRLab.CA.Regression
     /// <summary>
     /// Stop condition by number of iterations or the accuracy of approximation for regression algorithm.
     /// </summary>
-    public class RegressionStopCondition
+    public sealed class RegressionStopCondition
     {
         private readonly double _requiredPrecision;
         private readonly int _maxIterations;

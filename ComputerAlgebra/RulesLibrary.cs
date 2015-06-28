@@ -6,14 +6,14 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using AIRLab.CA.Algebra;
+using AIRLab.CA.Axioms;
+using AIRLab.CA.Nodes;
 using AIRLab.CA.Regression;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Rules;
-using AIRLab.CA.Tree.RulesCollection;
 
 namespace AIRLab.CA
 {
-    public static class RulesLibrary
+    public static class AxiomsLibrary
     {
         /// <summary>
         /// Apply each rule from collection to passed node, while it possible
@@ -21,7 +21,7 @@ namespace AIRLab.CA
         /// <param name="node"></param>
         /// <param name="rules"></param>
         /// <returns></returns>
-        public static INode ApplyRules(INode node, IRule[] rules)
+        public static INode ApplyAxioms(INode node, IAxiom[] rules)
         {
             var current = node;
             string firstRep;
@@ -52,22 +52,22 @@ namespace AIRLab.CA
         /// Get a list of algebraic and logic simplification rules
         /// </summary>
         /// <returns></returns>
-        public static IRule[] GetSimplificationRules()
+        public static IAxiom[] GetSimplificationAxioms()
         {
-            var simplificationRules = AlgebraicRules.Get()
+            var simplificationAxioms = AlgebraicAxioms.Get()
                                  .Where(r => r.Tags.Contains(StdTags.Simplification))
                                  .ToList();
-            simplificationRules.AddRange(LogicRules.Get().Where(r => r.Tags.Contains(StdTags.Simplification)));
-            return simplificationRules.ToArray();
+            simplificationAxioms.AddRange(LogicAxioms.Get().Where(r => r.Tags.Contains(StdTags.Simplification)));
+            return simplificationAxioms.ToArray();
         }
 
         /// <summary>
         /// Get a list of simple differentiation rules
         /// </summary>
         /// <returns></returns>
-        public static IList<IRule> GetDifferentiationRules()
+        public static IList<IAxiom> GetDifferentiationAxioms()
         {
-            return DifferentiationRules.Get().ToList();
+            return DifferentiationAxioms.Get().ToList();
         }
 
         /// <summary>
@@ -76,19 +76,19 @@ namespace AIRLab.CA
         /// <param name="inSample">Experimental data</param>
         /// <param name="exactResult">Experimental result</param>
         /// <returns></returns>
-        public static IList<IRule> GetRegeressionRule(IList<double[]> inSample, IList<double> exactResult)
+        public static IList<IAxiom> GetRegeressionAxiom(IList<double[]> inSample, IList<double> exactResult)
         {
-            return RegressionRules.Get(inSample, exactResult).ToList();
+            return RegressionAxioms.Get(inSample, exactResult).ToList();
         }
 
         /// <summary>
-        /// Rule from resolution technique, used for deciding the satisfiability of a propositional formula, in first-order-logic 
+        /// Axiom from resolution technique, used for deciding the satisfiability of a propositional formula, in first-order-logic 
         /// </summary>
         /// <seealso cref="ComputerAlgebra.Resolve"/>
         /// <returns></returns>
-        public static IRule GetResolutionRule()
+        public static IAxiom GetResolutionAxiom()
         {
-            return ResolutionRule.Get();
+            return ResolutionAxiom.Get();
         }
     }
 }

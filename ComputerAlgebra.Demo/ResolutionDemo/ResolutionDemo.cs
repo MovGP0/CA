@@ -10,7 +10,6 @@ using System.Linq.Expressions;
 using AIRLab.CA;
 using AIRLab.CA.ExpressionConverters;
 using AIRLab.CA.Groups;
-using AIRLab.CA.Tree.Rules;
 
 namespace ResolutionDemo
 {

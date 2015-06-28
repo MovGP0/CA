@@ -1,5 +1,5 @@
 Computer Algebra System for .NET Framework
-================================
+==========================================
 
 # Preface #
 
@@ -25,13 +25,17 @@ for this task, based on .NET framework. We do not have an objective to write ent
 research area, because it gives an opportunity to work with symbolic computations with a modern and effective programming languages. Also, as we will see below, .NET framework and C# language provides several syntax features,
  which facilitate definition of transformational rules. The usage such features for transformation rules programming gives a fresh look on symbolic computations, and could be resulted in new approaches to computer algebra systems.
 
-# Rule definition #
+# Axiom definition #
 
-Application of the rule can be subdivided into the three stages. In *sampling* stage, the system that applies rules (which will be called *driver* below) selects some tree-like structure from 
-the syntax tree, and presents its nodes as a tuple. In *selection* stage, the driver sort out the tuples that do not meet the specified criteria. In third stage, called *modification*, the driver transforms 
+Application of the rule can be subdivided into the three stages. 
+
+1. In *sampling* stage, the system that applies rules (which will be called *driver* below) selects some tree-like structure from 
+the syntax tree, and presents its nodes as a tuple. 
+2. In *selection* stage, the driver sort out the tuples that do not meet the specified criteria. 
+3. In third stage, called *modification*, the driver transforms 
 the tree according to the rule. In the most widespread case, the rule processes one tree. For such *unary* rules, the original tree is copied, and then the copy is rearranged according to rule. In some cases, 
 the rule processes more than one tree. For example, in logical interference modus ponens rule accepts two trees *A &rarr; B* and *A* and produces *B*. In this case, new tree is to be created and built with nodes 
-copies from selected tuple. Since the driver always copies the nodes before manipulation, the corectness of initial trees is preserved. 
+copies from selected tuple. Since the driver always copies the nodes before manipulation, the correctness of initial trees is preserved. 
 
 ## Sampling ##
 To perform the sampling stage, we should specify the tree-like structure we search in a tree. Also, we need to map the nodes in the structure into a tuple of nodes. We used query strings of our own syntax to do that. 
@@ -72,7 +76,7 @@ for elements. With array representation, selection could only performed as this:
 ```
 
 Of course, constant casting and addressing is a potential cause of type errors. We have developed an elegant solution for selection with the aid of generic-methods and code generation. 
-For this functionality responds method <code>Rule.SelectWhere</code>, which takes array of <code>INode</code>, generates <code>IEnumerable&lt;SelectOutput&gt;</code> and passes this enumeration to delegate <code>where</code> 
+For this functionality responds method <code>Axiom.SelectWhere</code>, which takes array of <code>INode</code>, generates <code>IEnumerable&lt;SelectOutput&gt;</code> and passes this enumeration to delegate <code>where</code> 
 with type <code>Func&lt;SelectOutput,WhereOutput&gt;</code>. This delegate verify the matching of the tuple to the filter and generates <code>WhereOutput</code> object, corresponding to the filtered tuple.
 
 ## Modification ##
@@ -80,14 +84,14 @@ When selection stage is over, we obtain several tuples that could be modified in
 Therefore, modification stage processes only one of the selected tuples. We have developed a "clean" modification, which does not affect the initial trees. Instead, in the modification stage we create a copy of selected 
 trees, and perform modification on the copy. To do that, we must find the roots of nodes, presented in a given tuple, clone them, and further process a newly created tuple with a corresponding clones of nodes.
 
-For this functionality responds method <code>Rule.Apply</code>, which takes <code>WhereOutput</code> object. Than it makes copy of this object through method <code>WhereOutput.MakeSafe</code> and passes this copy to 
+For this functionality responds method <code>Axiom.Apply</code>, which takes <code>WhereOutput</code> object. Than it makes copy of this object through method <code>WhereOutput.MakeSafe</code> and passes this copy to 
 delegate <code>apply</code>, where modification performs.
 
 ## Creating new rule ##
 Full rule definition looks like this:
 
 ```csharp
-Rule  
+Axiom  
     .New("+0", StdTags.Algebraic, StdTags.Simplification, StdTags.SafeResection)  
     .Select(AnyA[ChildB, ChildC])  
     .Where<Arithmetic.Plus<double>, Constant<double>, INode>(z => z.B.Value == 0)  
@@ -98,7 +102,7 @@ This rule looks for subtrees *X+0* or *0+X* and replaces them with *X*. We have 
 you can do with the system to date.
 
 # Simplification and Differentiation #
-You can find rules for simplification and differentiation in classes <code>AlgebraicRules</code> and <code>DifferentiationRules</code> accordingly. To simplify expression with existing rules use method 
+You can find rules for simplification and differentiation in classes <code>AlgebraicAxioms</code> and <code>DifferentiationAxioms</code> accordingly. To simplify expression with existing rules use method 
 <code>ComputerAlgebra.Simplify</code> like this:
 
 ```csharp
@@ -154,7 +158,7 @@ The algorithm of unification is implemented in <code>UnificationService</code> c
 The main part of this technique, the resolution rule, is implemented as standard rule of this system:
 
 ```csharp
-Rule   
+Axiom   
 	.New("Resolve", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection)   
 	.Select(A[ChildB], C[ChildD])    
 	.Where<Logic.MultipleOr, SkolemPredicateNode, Logic.MultipleOr, SkolemPredicateNode>(z => UnificationService.CanUnificate(z.B, z.D) && (z.B.IsNegate || z.D.IsNegate))                                                                                                                  

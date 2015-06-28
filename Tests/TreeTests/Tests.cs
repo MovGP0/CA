@@ -6,7 +6,7 @@
 
 using System.Linq.Expressions;
 using AIRLab.CA.ExpressionConverters;
-using AIRLab.CA.Tree.Nodes;
+using AIRLab.CA.Nodes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIRLab.CA.Tests.TreeTests

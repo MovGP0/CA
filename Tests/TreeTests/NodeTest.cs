@@ -4,9 +4,9 @@
 // imedvedev3@gmail.com, yuri.okulovsky@gmail.com, yariksuperman@gmail.com, johann.dirry@aon.at
 //
 
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators.Arithmetic;
-using AIRLab.CA.Tree.Operators.Logic;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators.Arithmetic;
+using AIRLab.CA.Operators.Logic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIRLab.CA.Tests.TreeTests

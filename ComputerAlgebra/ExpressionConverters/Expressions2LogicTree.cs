@@ -9,9 +9,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using AIRLab.CA.Exceptions;
 using AIRLab.CA.Groups;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators.Logic;
-using AIRLab.CA.Tree.Rules;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators.Logic;
 using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA.ExpressionConverters

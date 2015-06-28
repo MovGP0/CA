@@ -7,8 +7,8 @@
 using System;
 using System.Linq.Expressions;
 using AIRLab.CA.Exceptions;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators.Arithmetic;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators.Arithmetic;
 using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA.ExpressionConverters

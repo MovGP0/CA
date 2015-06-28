@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C85B2FB7-9F28-4591-AE92-E084FA3FEFBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AIRLab.CA.Axioms</RootNamespace>
+    <AssemblyName>AIRLab.CA.Axioms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Axiom.cs" />
+    <Compile Include="BasicSelector.cs" />
+    <Compile Include="ComplexSelector.cs" />
+    <Compile Include="ModInput.cs" />
+    <Compile Include="NewAxiom.cs" />
+    <Compile Include="NewAxiomExtensions.cs" />
+    <Compile Include="NodeDecorator.cs" />
+    <Compile Include="NodeInterfaceExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectAxiom.cs" />
+    <Compile Include="SelectAxiomInterfaceExtensions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectAxiomInterfaceExtensions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectClauseNode.cs" />
+    <Compile Include="SelectClauseWriter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectClauseWriter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectOutput.cs" />
+    <Compile Include="SelectWhereAxiom.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectWhereAxiom.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SelectWhereAxiomExtensions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SelectWhereAxiomExtensions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StdTags.cs" />
+    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="TypizedDecorArray.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypizedDecorArray.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypizedNodeArray.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TypizedNodeArray.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WhereOutput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SelectAxiomInterfaceExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectAxiomInterfaceExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectClauseWriter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectClauseWriter.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectWhereAxiom.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectWhereAxiom.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectWhereAxiomExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectWhereAxiomExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="TypizedDecorArray.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypizedDecorArray.cs</LastGenOutput>
+    </Content>
+    <Content Include="TypizedNodeArray.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypizedNodeArray.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIRLab.CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj">
+      <Project>{75b4bf2f-a84b-4847-8264-472aa8076aff}</Project>
+      <Name>AIRLab.CA.Axioms.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
+      <Project>{2ada93d8-96c3-404f-a7ce-ef0315fd8a93}</Project>
+      <Name>AIRLab.CA.Nodes.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIRLab.CA.Nodes\AIRLab.CA.Nodes.csproj">
+      <Project>{cc9a3a57-9542-4599-9caf-6a7fcf2b3098}</Project>
+      <Name>AIRLab.CA.Nodes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -7,8 +7,8 @@
 using System;
 using System.Linq.Expressions;
 using AIRLab.CA.ExpressionConverters;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators.Arithmetic;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators.Arithmetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AIRLab.CA.Tests.TreeTests

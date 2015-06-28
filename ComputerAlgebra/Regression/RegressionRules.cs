@@ -5,19 +5,18 @@
 //
 
 using System.Collections.Generic;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Rules;
-using AIRLab.CA.Tree.RulesCollection;
+using AIRLab.CA.Axioms;
+using AIRLab.CA.Nodes;
 
 namespace AIRLab.CA.Regression
 {
-    public class RegressionRules : SelectClauseWriter
+    public sealed class RegressionAxioms : SelectClauseWriter
     {
         public static int IterationCount;
 
-        public static IEnumerable<IRule> Get(IList<double[]> inSample, IList<double> exactResult)
+        public static IEnumerable<IAxiom> Get(IList<double[]> inSample, IList<double> exactResult)
         {
-            yield return Rule
+            yield return Axiom
                 .New("Regression", StdTags.Regression, StdTags.Algebraic)
                 .Select(AnyA)
                 .Where<INode<double>>()

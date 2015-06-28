@@ -9,9 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using AIRLab.CA.ExpressionConverters;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators.Differentiation;
-using AIRLab.CA.Tree.Operators.Logic;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators.Differentiation;
+using AIRLab.CA.Operators.Logic;
 using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA
@@ -19,7 +19,7 @@ namespace AIRLab.CA
     public static class ComputerAlgebra
     {
         /// <summary>
-        /// Simplify expression, using simplification rules from <see cref="RulesLibrary"/>
+        /// Simplify expression, using simplification rules from <see cref="AxiomsLibrary"/>
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
@@ -29,13 +29,13 @@ namespace AIRLab.CA
         }
 
         /// <summary>
-        /// Simplify tree, using simplification rules from <see cref="RulesLibrary"/>
+        /// Simplify tree, using simplification rules from <see cref="AxiomsLibrary"/>
         /// </summary>
         /// <param name="tree"></param>
         /// <returns></returns>
         public static INode Simplify(INode tree)
         {
-            return RulesLibrary.ApplyRules(tree, RulesLibrary.GetSimplificationRules());
+            return AxiomsLibrary.ApplyAxioms(tree, AxiomsLibrary.GetSimplificationAxioms());
         }
 
         /// <summary>
@@ -63,14 +63,14 @@ namespace AIRLab.CA
         {
             var varIndex = index;
             var varName = NodeElementNames.GetVariableNodeNames().ElementAt(index);
-            var rules = RulesLibrary.GetSimplificationRules().ToList();
-            rules.AddRange(RulesLibrary.GetDifferentiationRules());
+            var rules = AxiomsLibrary.GetSimplificationAxioms().ToList();
+            rules.AddRange(AxiomsLibrary.GetDifferentiationAxioms());
             if (variable.Equals("") || NodeElementNames.GetVariableNodeNames().IndexOf(variable) == -1)
-                return RulesLibrary.ApplyRules(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());
+                return AxiomsLibrary.ApplyAxioms(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());
 
             varIndex = NodeElementNames.GetVariableNodeNames().IndexOf(variable);
             varName = variable;
-            return RulesLibrary.ApplyRules(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());            
+            return AxiomsLibrary.ApplyAxioms(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());            
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace AIRLab.CA
         /// <returns>The list of formulas, which is a the logical consequence of input clauses</returns>
         public static IEnumerable<INode> Resolve(INode node1, INode node2)
         {
-            var rule = RulesLibrary.GetResolutionRule();
+            var rule = AxiomsLibrary.GetResolutionAxiom();
             var instances = rule.SelectWhere(node1, node2);
             return instances.Select(ins => rule
                 .Apply(ins)

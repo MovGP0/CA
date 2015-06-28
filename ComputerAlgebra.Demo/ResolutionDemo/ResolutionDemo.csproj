@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ResolutionDemo</RootNamespace>
     <AssemblyName>ResolutionDemo</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -50,6 +50,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AIRLab.CA.Algebra\AIRLab.CA.Algebra.csproj">
+      <Project>{5B76653D-21BB-4B0E-9DE5-A6882CCE027C}</Project>
+      <Name>AIRLab.CA.Algebra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
+      <Project>{2ADA93D8-96C3-404F-A7CE-EF0315FD8A93}</Project>
+      <Name>AIRLab.CA.Nodes.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\ComputerAlgebra\AIRLab.CA.csproj">
       <Project>{4C4EA496-89A1-4FE1-B18C-28E2577A2151}</Project>
       <Name>AIRLab.CA</Name>

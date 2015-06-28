@@ -9,7 +9,7 @@ namespace AIRLab.CA.Groups
     /// <summary>
     /// The group F(2)
     /// </summary>
-    public class BooleanGroup 
+    public sealed class BooleanGroup 
     {
         public static BooleanGroup operator |(BooleanGroup node1, BooleanGroup node2)
         {

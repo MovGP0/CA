@@ -7,9 +7,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AIRLab.CA.Tree.Nodes;
-using AIRLab.CA.Tree.Operators;
-using AIRLab.CA.Tree.Operators.Arithmetic;
+using AIRLab.CA.Nodes;
+using AIRLab.CA.Operators;
+using AIRLab.CA.Operators.Arithmetic;
 using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA.SampleGenerator
