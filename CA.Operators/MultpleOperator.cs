@@ -30,7 +30,7 @@ namespace AIRLab.CA.Operators
 
         public override Expression BuildExpression()
         {
-            var arguments = Expression.Parameter(typeof (IList));
+            var arguments = Expression.Parameter(typeof(IList));
             var expr = Children[0].BuildExpression();
             for (var i = 1; i < Children.Length; i++)
             {

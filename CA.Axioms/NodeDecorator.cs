@@ -9,7 +9,7 @@ using AIRLab.CA.Nodes;
 namespace AIRLab.CA.Axioms
 {
     public sealed class NodeDecorator<T> : INodeDecorator<T>
-        where T: INode
+        where T : INode
     {
         public T Node { get; }
         public INode InitialParent { get; }
@@ -21,7 +21,7 @@ namespace AIRLab.CA.Axioms
             Instance = instance;
             Node = node;
             InitialParent = (node).Parent;
-            if (InitialParent!=null)
+            if (InitialParent != null)
                 InitialIndex = InitialParent.IndexOfChild(node);
         }
 

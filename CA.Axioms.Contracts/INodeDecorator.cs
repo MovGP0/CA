@@ -12,9 +12,9 @@ namespace AIRLab.CA.Axioms
         where T : INode
     {
         void Replace(INode newNode);
-        T Node { get;  }
-        INode InitialParent { get;  }
-        int InitialIndex { get;  }
-        IModInput Instance { get;  }
+        T Node { get; }
+        INode InitialParent { get; }
+        int InitialIndex { get; }
+        IModInput Instance { get; }
     }
 }

@@ -39,8 +39,8 @@ namespace AIRLab.CA.Tests
                 }
                 return;
             }
-            
-            if (!(node is Constant)) 
+
+            if (!(node is Constant))
                 return;
 
             var oldValue = ((Constant<double>)node).Value;

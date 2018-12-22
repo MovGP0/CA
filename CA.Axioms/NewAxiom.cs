@@ -11,6 +11,7 @@ namespace AIRLab.CA.Axioms
     {
         public string Name { get; }
         public IEnumerable<string> Tags { get; }
+
         public NewAxiom(string name, IEnumerable<string> tags)
         {
             Name = name;

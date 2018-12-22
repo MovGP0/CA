@@ -20,7 +20,8 @@ namespace AIRLab.CA.ExpressionConverters
             try
             {
                 return GetTree(node);
-            } catch(ParseException e)
+            }
+            catch (ParseException e)
             {
                 throw new ParseException(string.Format("Failed to parse tree {0} into a expression", node), e);
             }
@@ -32,16 +33,16 @@ namespace AIRLab.CA.ExpressionConverters
             if (binaryOperator != null)
             {
                 var operand = binaryOperator;
-                if(operand is Addition)
+                if (operand is Addition)
                     return Expression.Add(GetTree(operand.Children[0]), GetTree(operand.Children[1]));
-                if(operand is Minus)
+                if (operand is Minus)
                     return Expression.Subtract(GetTree(operand.Children[0]), GetTree(operand.Children[1]));
-                if(operand is ScalarProduct)
+                if (operand is ScalarProduct)
                     return Expression.Multiply(GetTree(operand.Children[0]), GetTree(operand.Children[1]));
-                if(operand is Divide)
+                if (operand is Divide)
                     return Expression.Divide(GetTree(operand.Children[0]), GetTree(operand.Children[1]));
-                if(operand is Pow)
-                    return Expression.Power(GetTree(operand.Children[0]), GetTree(operand.Children[1]));                
+                if (operand is Pow)
+                    return Expression.Power(GetTree(operand.Children[0]), GetTree(operand.Children[1]));
             }
 
             var @operator = node as UnaryOperator;
@@ -55,9 +56,9 @@ namespace AIRLab.CA.ExpressionConverters
                 if (operand is Cos)
                     return Expression.Call(typeof(Math).GetMethod("Cos"), GetTree(operand.Children[0]));
                 if (operand is Tan)
-                    return Expression.Call(typeof(Math).GetMethod("Tan"), GetTree(operand.Children[0]));                
+                    return Expression.Call(typeof(Math).GetMethod("Tan"), GetTree(operand.Children[0]));
                 if (operand is Ln)
-                    return Expression.Call(typeof(Math).GetMethod("Log", new [] { typeof(double) }), GetTree(operand.Children[0])); 
+                    return Expression.Call(typeof(Math).GetMethod("Log", new[] { typeof(double) }), GetTree(operand.Children[0]));
             }
 
             var variableNode = node as VariableNode;
@@ -69,7 +70,7 @@ namespace AIRLab.CA.ExpressionConverters
 
 
             var @const = node as Constant;
-            if (@const == null) 
+            if (@const == null)
                 throw new ParseException(string.Format("Unexpected argument '{0}'", node));
 
             var _const = @const;

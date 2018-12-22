@@ -13,7 +13,7 @@ namespace AIRLab.CA.Nodes
         public string Name { get; }
 
         protected TermNode(string name, params INode[] childs)
-             :base(childs)
+             : base(childs)
         {
             Name = name;
         }

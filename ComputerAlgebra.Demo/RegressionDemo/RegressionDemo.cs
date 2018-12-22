@@ -13,7 +13,7 @@ using AIRLab.CA.Nodes;
 
 namespace CADemo
 {
-    static class RegressionDemo
+    internal static class RegressionDemo
     {
         private const double NoiseLevel = 0.1;
         private static readonly Random RandomNumberGenerator = new Random();
@@ -26,13 +26,13 @@ namespace CADemo
 
             GenerateNoisyConstantsForNodeLeafes(randomFormula);
             Console.WriteLine("Formula after making constants noisy: {0}", randomFormula);
-            
+
             Console.WriteLine("Press any key to start regression...");
             Console.ReadKey(true);
 
             var alg = new RegressionAlgorithm(randomFormula, sampleGenerator.InSamples, sampleGenerator.ExactResult);
             ConsoleGui.Run(alg, 5, "");
-            
+
             Console.WriteLine("Result: {0}", alg.GetResult());
         }
 
@@ -54,10 +54,10 @@ namespace CADemo
         private static Constant<double> CalculateNewConstant(Constant<double> constant)
         {
             var oldValue = constant.Value;
-            var newValue = oldValue + 
-                Math.Pow((-1), RandomNumberGenerator.Next(3)) *
-                RandomNumberGenerator.Next((int) (oldValue/2), (int) (oldValue*2)) * 
-                NoiseLevel;
+            var newValue = oldValue
+                + (Math.Pow(-1, RandomNumberGenerator.Next(3))
+                * RandomNumberGenerator.Next((int)(oldValue / 2), (int)(oldValue * 2))
+                * NoiseLevel);
             return new Constant<double>(newValue);
         }
     }

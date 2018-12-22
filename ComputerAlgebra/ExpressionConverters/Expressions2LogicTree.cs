@@ -28,7 +28,7 @@ namespace AIRLab.CA.ExpressionConverters
                 var body = expr is LambdaExpression ? ((LambdaExpression)expr).Body : expr;
                 return GetTree(body);
             }
-            catch(ParseException exp)
+            catch (ParseException exp)
             {
                 throw new ParseException(string.Format("Failed to parse expression {0} into a logic tree", expr), exp);
             }
@@ -37,7 +37,7 @@ namespace AIRLab.CA.ExpressionConverters
         private static INode GetTree(Expression body)
         {
             var expression = body as BinaryExpression;
-            if (expression == null) 
+            if (expression == null)
                 return new MultipleOr(GetOperands(body, false).ToArray());
 
             var operand = expression;
@@ -68,20 +68,20 @@ namespace AIRLab.CA.ExpressionConverters
                 }
                 if (expr.NodeType.Equals(ExpressionType.Not))
                 {
-                    expr = ((UnaryExpression) expr).Operand;
+                    expr = ((UnaryExpression)expr).Operand;
                     negate = true;
                     continue;
                 }
                 if (expr.NodeType.Equals(ExpressionType.Call))
                 {
-                    var method = (MethodCallExpression) expr;
+                    var method = (MethodCallExpression)expr;
                     var operands = new List<INode>();
-                    var argument = (NewArrayExpression) method.Arguments[0];
+                    var argument = (NewArrayExpression)method.Arguments[0];
                     if (argument == null)
                     {
                         throw new ParseException("Parse error");
                     }
-                    if (method.Type == typeof (BooleanGroup))
+                    if (method.Type == typeof(BooleanGroup))
                     {
                         foreach (var arg in argument.Expressions)
                         {
@@ -95,7 +95,7 @@ namespace AIRLab.CA.ExpressionConverters
                         {
                             if (arg.NodeType.Equals(ExpressionType.Parameter))
                             {
-                                operands.Add(VariableNode.Make<bool>(NodeElementNames.GetVariableNodeNames().IndexOf(((ParameterExpression) arg).Name), ((ParameterExpression) arg).Name));
+                                operands.Add(VariableNode.Make<bool>(NodeElementNames.GetVariableNodeNames().IndexOf(((ParameterExpression)arg).Name), ((ParameterExpression)arg).Name));
                             }
                             else if (arg.NodeType.Equals(ExpressionType.Call))
                             {
@@ -103,7 +103,7 @@ namespace AIRLab.CA.ExpressionConverters
                             }
                             else if (arg.NodeType.Equals(ExpressionType.Constant))
                             {
-                                operands.Add(new FunctionNode(NodeElementNames.GetConstantNames().ElementAt((int) ((ConstantExpression) arg).Value)));
+                                operands.Add(new FunctionNode(NodeElementNames.GetConstantNames().ElementAt((int)((ConstantExpression)arg).Value)));
                             }
                         }
                         yield return new FunctionNode(method.Method.Name, operands.ToArray());
@@ -111,11 +111,11 @@ namespace AIRLab.CA.ExpressionConverters
                 }
                 else if (expr.NodeType.Equals(ExpressionType.Parameter))
                 {
-                    yield return VariableNode.Make<bool>(NodeElementNames.GetVariableNodeNames().IndexOf(((ParameterExpression) expr).Name), ((ParameterExpression) expr).Name);
+                    yield return VariableNode.Make<bool>(NodeElementNames.GetVariableNodeNames().IndexOf(((ParameterExpression)expr).Name), ((ParameterExpression)expr).Name);
                 }
                 else if (expr.NodeType.Equals(ExpressionType.Constant))
                 {
-                    yield return new FunctionNode(NodeElementNames.GetConstantNames().ElementAt((int) ((ConstantExpression) expr).Value));
+                    yield return new FunctionNode(NodeElementNames.GetConstantNames().ElementAt((int)((ConstantExpression)expr).Value));
                 }
                 break;
             }

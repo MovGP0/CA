@@ -13,7 +13,7 @@ namespace AIRLab.CA.Operators
 {
     public class TernaryOperator : Node
     {
-        public TernaryOperator(Type type, INode child1, INode child2, INode child3) 
+        public TernaryOperator(Type type, INode child1, INode child2, INode child3)
             : base(child1, child2, child3)
         {
             Type = type;
@@ -31,6 +31,7 @@ namespace AIRLab.CA.Operators
                     arguments);
         }
     }
+
     public class TernaryOperator<T> : TernaryOperator, INode<T>
     {
         public TernaryOperator(INode child1, INode child2, INode child3)

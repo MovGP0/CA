@@ -51,8 +51,8 @@ namespace AIRLab.CA.Tests.TreeTests
         static void Test(int expectedCount, params object[] q)
         {
             var num = q.Length / 2;
-            var clauses = q.Take(num).Select(z => (SelectClauseNode) z).ToArray();
-            var roots = q.Skip(num).Select(z => (INode) z).ToArray();
+            var clauses = q.Take(num).Select(z => (SelectClauseNode)z).ToArray();
+            var roots = q.Skip(num).Select(z => (INode)z).ToArray();
             var selector = new ComplexSelector(clauses);
             Assert.IsTrue(selector.Select(roots).Count() == expectedCount);
         }

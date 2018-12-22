@@ -16,8 +16,8 @@ namespace AIRLab.CA.Nodes
     /// </summary>
     public class PredicateNode : TermNode
     {
-        public PredicateNode(string name, params INode[] childs )
-             :base(name, childs)
+        public PredicateNode(string name, params INode[] childs)
+             : base(name, childs)
         { }
 
         public override Expression BuildExpression()

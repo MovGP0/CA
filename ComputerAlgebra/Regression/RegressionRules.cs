@@ -26,7 +26,7 @@ namespace AIRLab.CA.Regression
         private static void Modificator(ITypizedDecorArray<INode<double>> z, IList<double[]> inSample, IList<double> exactResult, int iterationCount)
         {
             var alg = new RegressionAlgorithm(z.A.Node, inSample, exactResult);
-            alg.Run(iterationCount); 
+            alg.Run(iterationCount);
             z.A.Replace(alg.GetResult());
         }
     }

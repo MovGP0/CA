@@ -6,13 +6,11 @@
 
 using System.Collections.Generic;
 
-namespace AIRLab.CA.Nodes
+namespace AIRLab.CA.Axioms
 {
-    public interface IChildrenCollection : IEnumerable<INode>
+    internal class SelectIntruction
     {
-        INode this[int index] { get; set; }
-        int Length { get; }
-        void ReleaseChild(int index);
-        INode[] ChildrenArray { get; set; }
+        public int ArrayLength;
+        public List<LetterInstruction> Letters = new List<LetterInstruction>();
     }
 }

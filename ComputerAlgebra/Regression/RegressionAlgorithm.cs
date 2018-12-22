@@ -27,7 +27,7 @@ namespace AIRLab.CA.Regression
         private readonly IList<double> _exactResult;
         private readonly double _precision;
         private double _lambda;
-        private IList<double> _oldGradient = new List<double>(); 
+        private IList<double> _oldGradient = new List<double>();
 
         private const int MaxIterationCount = 1000;
         private bool _success = true;
@@ -55,14 +55,14 @@ namespace AIRLab.CA.Regression
             while (condition.Check(ApproximationError))
             {
                 MakeIteration();
-                if (CurrentIteration <= MaxIterationCount) 
+                if (CurrentIteration <= MaxIterationCount)
                     continue;
 
                 _success = false;
                 break;
             }
 
-            if (!InConstant.Exists(double.IsNaN) && !InConstant.Exists(double.IsInfinity)) 
+            if (!InConstant.Exists(double.IsNaN) && !InConstant.Exists(double.IsInfinity))
                 return;
 
             _success = false;
@@ -76,8 +76,8 @@ namespace AIRLab.CA.Regression
             {
                 var numerator = gradient.Select((t, i) => t * _oldGradient[i]).Sum();
                 var denumerator =
-                    Math.Sqrt(gradient.Aggregate((x, y) => Math.Pow(x, 2.0)+Math.Pow(y, 2.0))*
-                              _oldGradient.Aggregate((x, y) => Math.Pow(x, 2.0)+Math.Pow(y, 2.0)));
+                    Math.Sqrt(gradient.Aggregate((x, y) => Math.Pow(x, 2.0) + Math.Pow(y, 2.0)) *
+                              _oldGradient.Aggregate((x, y) => Math.Pow(x, 2.0) + Math.Pow(y, 2.0)));
                 var alfa = Math.Acos(Math.Round(numerator / denumerator, 15));
                 _lambda *= GetFactor(alfa);
             }
@@ -98,7 +98,7 @@ namespace AIRLab.CA.Regression
         /// <returns>The resulting formular. <c>null</c> if the calculation runs too long and has been stoped.</returns>
         public INode GetResult()
         {
-            if (!_success) 
+            if (!_success)
                 return null;
 
             // replace variables by calculated contants
@@ -126,7 +126,7 @@ namespace AIRLab.CA.Regression
         private List<double> MakeGradientStep(List<double> constantSet)
         {
             CurrentIteration++;
-            var gradient = new List<double>(); 
+            var gradient = new List<double>();
 
             for (var c = _index - InConstant.Count; c < _index; c++)
             {
@@ -158,13 +158,13 @@ namespace AIRLab.CA.Regression
             if (double.IsNaN(alfa))
                 return 1;
 
-            if (alfa < Math.PI/6)
+            if (alfa < Math.PI / 6)
                 return 2;
 
             if (Math.PI / 6 <= alfa && alfa <= Math.PI / 2)
                 return 1;
 
-            return 1.0/3;
+            return 1.0 / 3;
         }
 
         private void BuildFunctional()
@@ -191,7 +191,7 @@ namespace AIRLab.CA.Regression
                 }
                 return;
             }
-            
+
             int childIndex;
             INode newVar;
 
@@ -199,19 +199,19 @@ namespace AIRLab.CA.Regression
             {
                 InConstant.Add(Double.Parse(node.ToString()));
                 childIndex = node.Parent.IndexOfChild(node);
-                newVar = VariableNode.Make<double>(_index, VarName + (InConstant.Count-1));
+                newVar = VariableNode.Make<double>(_index, VarName + (InConstant.Count - 1));
                 node.Parent.Children[childIndex] = newVar;
                 _index++;
             }
 
-            if (!(node is VariableNode) || replaceConstant) 
+            if (!(node is VariableNode) || replaceConstant)
                 return;
 
-            if (((VariableNode) node).Index < _index - InConstant.Count) 
+            if (((VariableNode)node).Index < _index - InConstant.Count)
                 return;
 
             childIndex = node.Parent.IndexOfChild(node);
-            newVar = new Constant<double>(InConstant[((VariableNode)node).Index-(_index - InConstant.Count)]);
+            newVar = new Constant<double>(InConstant[((VariableNode)node).Index - (_index - InConstant.Count)]);
             node.Parent.Children[childIndex] = newVar;
         }
     }

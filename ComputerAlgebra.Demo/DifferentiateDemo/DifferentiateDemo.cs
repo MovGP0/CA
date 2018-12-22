@@ -11,7 +11,7 @@ using AIRLab.CA.ExpressionConverters;
 
 namespace DifferentiateDemo
 {
-    static class DifferentiateDemo
+    internal static class DifferentiateDemo
     {
         static void Main()
         {
@@ -20,7 +20,7 @@ namespace DifferentiateDemo
             var node = Expressions2Tree.Parse(function);
 
             // Differentiation
-            var resultFromDiffX = ComputerAlgebra.Differentiate(node, variable : "x");
+            var resultFromDiffX = ComputerAlgebra.Differentiate(node, variable: "x");
             var resultFromDiffY = ComputerAlgebra.Differentiate(node, variable: "y");
             var resultFromDiffZ = ComputerAlgebra.Differentiate(node, variable: "z");
 

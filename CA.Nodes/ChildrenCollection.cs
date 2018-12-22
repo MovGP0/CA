@@ -14,7 +14,8 @@ namespace AIRLab.CA.Nodes
     public sealed class ChildrenCollection : IChildrenCollection
     {
         private readonly INode _owner;
-        public INode[] ChildrenArray {get; set;}
+        public INode[] ChildrenArray { get; set; }
+
         public ChildrenCollection(INode owner, int length)
         {
             _owner = owner;

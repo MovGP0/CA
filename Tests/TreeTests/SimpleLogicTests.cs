@@ -79,8 +79,8 @@ namespace AIRLab.CA.Tests.TreeTests
                 new Constant<bool>(true).ToString(),
                 SimplifyLogicTree(root).ToString());
         }
-        
+
         #endregion
     }
-    
+
 }

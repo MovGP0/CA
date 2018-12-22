@@ -29,7 +29,7 @@ namespace AIRLab.CA.Nodes
 
         public override Expression BuildExpression()
         {
-            return Expression.Lambda(Expression.Constant(Data, Type), Expression.Parameter(typeof (IList)));
+            return Expression.Lambda(Expression.Constant(Data, Type), Expression.Parameter(typeof(IList)));
         }
 
         public override string ToString()

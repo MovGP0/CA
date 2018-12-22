@@ -18,7 +18,7 @@ namespace AIRLab.CA.Algebra
             return Axiom
                 .New("Resolve", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection)
                 .Select(A[ChildB], C[ChildD])
-                .Where<MultipleOr, SkolemPredicateNode, MultipleOr, SkolemPredicateNode>(z => 
+                .Where<MultipleOr, SkolemPredicateNode, MultipleOr, SkolemPredicateNode>(z =>
                     UnificationService.CanUnificate(z.B, z.D) && (z.B.IsNegate || z.D.IsNegate))
                 .Mod(Modificator);
         }

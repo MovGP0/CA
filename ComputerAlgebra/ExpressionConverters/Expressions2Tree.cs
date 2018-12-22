@@ -21,7 +21,8 @@ namespace AIRLab.CA.ExpressionConverters
             {
                 var body = e is LambdaExpression ? ((LambdaExpression)e).Body : e;
                 return GetTree(body);
-            } catch(ParseException exp)
+            }
+            catch (ParseException exp)
             {
                 throw new ParseException(string.Format("Failed to parse expression {0} into a tree", e), exp);
             }
@@ -30,24 +31,24 @@ namespace AIRLab.CA.ExpressionConverters
         private static INode GetTree(Expression e)
         {
             var expression = e as BinaryExpression;
-            if(expression != null)
+            if (expression != null)
             {
                 var operand = expression;
                 switch (expression.NodeType)
                 {
-                        // +
+                    // +
                     case ExpressionType.Add:
-                        return new Addition<double>(GetTree(operand.Left), GetTree(operand.Right));   
-                        // -
+                        return new Addition<double>(GetTree(operand.Left), GetTree(operand.Right));
+                    // -
                     case ExpressionType.Subtract:
-                        return new Minus<double>(GetTree(operand.Left), GetTree(operand.Right));       
-                        // *        
+                        return new Minus<double>(GetTree(operand.Left), GetTree(operand.Right));
+                    // *        
                     case ExpressionType.Multiply:
                         return new ScalarProduct<double>(GetTree(operand.Left), GetTree(operand.Right));
-                        // /
+                    // /
                     case ExpressionType.Divide:
-                        return new Divide<double>(GetTree(operand.Left), GetTree(operand.Right));   
-                        // ^
+                        return new Divide<double>(GetTree(operand.Left), GetTree(operand.Right));
+                    // ^
                     case ExpressionType.Power:
                         return new Pow<double>(GetTree(operand.Left), GetTree(operand.Right));
                 }
@@ -61,7 +62,7 @@ namespace AIRLab.CA.ExpressionConverters
             if (e.NodeType.Equals(ExpressionType.Call))
             {
                 var method = (MethodCallExpression)e;
-                if(method.Method.Equals(typeof(Math).GetMethod("Pow")))
+                if (method.Method.Equals(typeof(Math).GetMethod("Pow")))
                     return new Pow<double>(GetTree(method.Arguments[0]), GetTree(method.Arguments[1]));
                 if (method.Method.Equals(typeof(Math).GetMethod("Cos")))
                     return new Cos(GetTree(method.Arguments[0]));
@@ -70,7 +71,7 @@ namespace AIRLab.CA.ExpressionConverters
                 if (method.Method.Equals(typeof(Math).GetMethod("Tan")))
                     return new Tan(GetTree(method.Arguments[0]));
                 if (method.Method.Equals(typeof(Math).GetMethod("Log", new[] { typeof(double) })))
-                    return new Ln(GetTree(method.Arguments[0]));   
+                    return new Ln(GetTree(method.Arguments[0]));
 
             }
 

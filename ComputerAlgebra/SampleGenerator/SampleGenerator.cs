@@ -46,7 +46,7 @@ namespace AIRLab.CA.SampleGenerator
             INode formula;
             while (true)
             {
-                formula = GenerateFormula(_operCount, _varCount);                
+                formula = GenerateFormula(_operCount, _varCount);
                 var function = formula.ComplileDelegate<double>();
 
                 InSamples = new List<double[]>(Arguments(_varCount, 0, null, Min, Max, Delta));
@@ -138,7 +138,7 @@ namespace AIRLab.CA.SampleGenerator
                     }
                     else
                     {
-                        formula.Add(GetRandomOperation(VariableNode.Make<double>(uniqueVars[i], 
+                        formula.Add(GetRandomOperation(VariableNode.Make<double>(uniqueVars[i],
                             NodeElementNames.GetVariableNodeNames().ElementAt(uniqueVars[i])), new Constant<double>(Rnd.Next(constCount) + 2)));
                     }
                 }

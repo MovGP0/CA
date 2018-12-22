@@ -19,10 +19,10 @@ namespace AIRLab.CA
             for (var count = 0; regressionAlgorithm.CurrentIteration < iterationCount; count++)
             {
                 regressionAlgorithm.MakeIteration();
-                if (count % iterationShowRate != 0) 
+                if (count % iterationShowRate != 0)
                     continue;
 
-                Console.SetCursorPosition(0, iterationCursorPosition+2);
+                Console.SetCursorPosition(0, iterationCursorPosition + 2);
                 Console.WriteLine("Iteration #:\t{0}", regressionAlgorithm.CurrentIteration);
                 Console.WriteLine("Constant set:\t[{0}]", string.Join(" ; ", regressionAlgorithm.InConstant));
                 Console.WriteLine("ApproximationError:\t{0}", regressionAlgorithm.ApproximationError);

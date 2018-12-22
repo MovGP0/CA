@@ -27,8 +27,8 @@ namespace AIRLab.CA.Nodes
 
         public override Expression BuildExpression()
         {
-            var arguments = Expression.Parameter(typeof (IList));
-            var called = Expression.Call(arguments, typeof (IList).GetMethod("get_Item"), Expression.Constant(Index));
+            var arguments = Expression.Parameter(typeof(IList));
+            var called = Expression.Call(arguments, typeof(IList).GetMethod("get_Item"), Expression.Constant(Index));
             var converted = Expression.Convert(called, Type);
             var block = Expression.Block(converted);
             return Expression.Lambda(block, arguments);

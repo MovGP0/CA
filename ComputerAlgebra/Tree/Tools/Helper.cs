@@ -68,7 +68,7 @@ namespace AIRLab.CA.Tree.Tools
                 return (T)formatter.Deserialize(stream);
             }
         }
-        
+
         public static string CleanTypeName(this Type type)
         {
             var name = type.Name;

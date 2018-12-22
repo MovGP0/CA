@@ -48,7 +48,7 @@ namespace AIRLab.CA.Nodes
 
         public static IEnumerable<INode> AsEnumerable(this INode node)
         {
-            var nodes = new[] {node};
+            var nodes = new[] { node };
             return node.Children == null ? nodes : nodes.Union(node.Children.SelectMany(AsEnumerable));
         }
 
@@ -109,7 +109,7 @@ namespace AIRLab.CA.Nodes
                 return false;
             foreach (var e in node.GetSubTree())
             {
-                if (e.Children.Count(z => z == null) != 0 ) return false;
+                if (e.Children.Count(z => z == null) != 0) return false;
                 var f = e.Parent;
                 while (f != null)
                 {
@@ -124,8 +124,8 @@ namespace AIRLab.CA.Nodes
         {
             var name = node.GetType().CleanTypeName();
             if (name == "Constant") return $"Constant({node})";
-            return name == "VariableNode" 
-                ? $"VariableNode({string.Join("|", ((VariableNode) node).Index, node.ToString())})" 
+            return name == "VariableNode"
+                ? $"VariableNode({string.Join("|", ((VariableNode)node).Index, node.ToString())})"
                 : $"{name}({GetChildrenRepresenation(node)})";
         }
 

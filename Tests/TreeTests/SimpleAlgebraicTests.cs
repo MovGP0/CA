@@ -47,7 +47,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void ProductZero()
         {
-            Expression<Del1> expression = x => x*0;
+            Expression<Del1> expression = x => x * 0;
             Assert.AreEqual(
                 "0",
                 SimplifyBinaryExpression(expression).ToString());
@@ -57,7 +57,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void ZeroDivide()
         {
-            Expression<Del1> expression = x => 0/x;
+            Expression<Del1> expression = x => 0 / x;
             Assert.AreEqual(
                 "0",
                 SimplifyBinaryExpression(expression).ToString());
@@ -78,7 +78,7 @@ namespace AIRLab.CA.Tests.TreeTests
         public void ZeroPow()
         {
             Expression expression = Expression.Power(Expression.Constant(0.0),
-                Expression.Parameter(typeof (double), "x"));
+                Expression.Parameter(typeof(double), "x"));
             Assert.AreEqual(
                 "0",
                 SimplifyBinaryExpression(expression).ToString());
@@ -88,7 +88,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void ProductOne()
         {
-            Expression<Del1> expression = x => x*1;
+            Expression<Del1> expression = x => x * 1;
             Assert.AreEqual(
                 "x",
                 SimplifyBinaryExpression(expression).ToString());
@@ -98,7 +98,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void DivideOne()
         {
-            Expression<Del1> expression = x => x/1;
+            Expression<Del1> expression = x => x / 1;
             Assert.AreEqual(
                 "x",
                 SimplifyBinaryExpression(expression).ToString());
@@ -148,7 +148,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void ConstProduct()
         {
-            Expression<Del> expression = () => 2*2;
+            Expression<Del> expression = () => 2 * 2;
             Assert.AreEqual(
                 "4",
                 SimplifyBinaryExpression(expression).ToString());
@@ -158,7 +158,7 @@ namespace AIRLab.CA.Tests.TreeTests
         [TestMethod]
         public void ConstDivide()
         {
-            Expression<Del> expression = () => 4/2;
+            Expression<Del> expression = () => 4 / 2;
             Assert.AreEqual(
                 "2",
                 SimplifyBinaryExpression(expression).ToString());

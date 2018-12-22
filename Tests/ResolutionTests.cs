@@ -38,8 +38,8 @@ namespace AIRLab.CA.Tests
                             node.ToString());
             Expression<Del1> e2 = (x) => P(f(x), a);
             node = Expressions2LogicTree.Parse(e2);
-            Assert.AreEqual(new MultipleOr(new SkolemPredicateNode("P", false, 
-                                                                        new FunctionNode("f", VariableNode.Make<bool>(0, "x")), 
+            Assert.AreEqual(new MultipleOr(new SkolemPredicateNode("P", false,
+                                                                        new FunctionNode("f", VariableNode.Make<bool>(0, "x")),
                                                                         new FunctionNode("a"))).ToString(),
                             node.ToString());
         }
@@ -102,7 +102,7 @@ namespace AIRLab.CA.Tests
                                       VariableNode.Make<bool>(2, "z"));
             // P(y,a)
             var B = new SkolemPredicateNode("P", false, VariableNode.Make<bool>(1, "y"), new FunctionNode("a"));
-            Assert.AreEqual(true, UnificationService.CanUnificate(A,B));
+            Assert.AreEqual(true, UnificationService.CanUnificate(A, B));
             var rules = UnificationService.GetUnificationAxioms(A, B);
             Assert.AreEqual(2, rules.Count);
             UnificationService.Unificate(A, rules);
@@ -144,10 +144,10 @@ namespace AIRLab.CA.Tests
         {
             // !P(x,b,z,s) V ANS(f(g(z,b,h(x,z,s))))
             var A = new MultipleOr(
-                new SkolemPredicateNode("P", true, VariableNode.Make<bool>(0, "x"), new FunctionNode("b"), VariableNode.Make<bool>(2,"z"), VariableNode.Make<bool>(3, "s")),
+                new SkolemPredicateNode("P", true, VariableNode.Make<bool>(0, "x"), new FunctionNode("b"), VariableNode.Make<bool>(2, "z"), VariableNode.Make<bool>(3, "s")),
                 new SkolemPredicateNode("ANS", false,
-                    new FunctionNode("f", 
-                        new FunctionNode("g",VariableNode.Make<bool>(2, "z"),new FunctionNode("b"), 
+                    new FunctionNode("f",
+                        new FunctionNode("g", VariableNode.Make<bool>(2, "z"), new FunctionNode("b"),
                             new FunctionNode("h", VariableNode.Make<bool>(0, "x"), VariableNode.Make<bool>(2, "z"), VariableNode.Make<bool>(3, "s"))))));
 
             // P(a,b,c,s0)
@@ -169,6 +169,6 @@ namespace AIRLab.CA.Tests
             Assert.AreEqual("Q(f(g(z)))", result[0].ToString());
         }
 
-        
+
     }
 }

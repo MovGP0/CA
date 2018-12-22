@@ -15,8 +15,8 @@ namespace AIRLab.CA.Algebra
     {
         public IEnumerable<IAxiom> Create(Constant<TField> additiveIdentity, Constant<TField> multiplicativeIdentity)
         {
-            var additiveIdentities = new List<Constant<TField>>{additiveIdentity};
-            var multiplicativeIdentities = new List<Constant<TField>> {multiplicativeIdentity};
+            var additiveIdentities = new List<Constant<TField>> { additiveIdentity };
+            var multiplicativeIdentities = new List<Constant<TField>> { multiplicativeIdentity };
             return Create(additiveIdentities, multiplicativeIdentities);
         }
 

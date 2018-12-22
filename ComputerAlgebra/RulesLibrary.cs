@@ -33,7 +33,7 @@ namespace AIRLab.CA
                 {
                     var instances = r.SelectWhere(current);
                     var whereOutputs = instances as WhereOutput[] ?? instances.ToArray();
-                    if (instances == null || !whereOutputs.Any()) 
+                    if (instances == null || !whereOutputs.Any())
                         continue;
 
                     foreach (var roots in whereOutputs.Select(r.Apply).Where(roots => roots != null && roots.Any() && roots[0] != null))
@@ -42,7 +42,7 @@ namespace AIRLab.CA
                         break;
                     }
                 }
-            } 
+            }
             while (firstRep != current.ToString());
 
             return current;

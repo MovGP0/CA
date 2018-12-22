@@ -13,7 +13,7 @@ using AIRLab.CA.Groups;
 
 namespace ResolutionDemo
 {
-    class ResolutionDemo : LogicExpressions
+    internal class ResolutionDemo : LogicExpressions
     {
         static void Main()
         {

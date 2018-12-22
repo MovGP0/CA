@@ -138,7 +138,7 @@ namespace AIRLab.CA.Algebra
                 return false;
             }
 
-            if(term1.Children.Length != term2.Children.Length)
+            if (term1.Children.Length != term2.Children.Length)
             {
                 return false;
             }
@@ -148,8 +148,8 @@ namespace AIRLab.CA.Algebra
 
         private static bool ChildrenAreEqual(ITermNode term1, ITermNode term2)
         {
-            return term1.Children.Aggregate(term1.Name.Equals(term2.Name), 
-                (current1, childA) => term2.Children.Aggregate(current1, 
+            return term1.Children.Aggregate(term1.Name.Equals(term2.Name),
+                (current1, childA) => term2.Children.Aggregate(current1,
                     (current, childB) => current && IsSame(childA, childB, true)));
         }
 
@@ -162,7 +162,7 @@ namespace AIRLab.CA.Algebra
 
             public int GetHashCode(ITermNode obj)
             {
-                return obj.Name.GetHashCode() + obj.Children.Sum(child => ((ITermNode) child).Name.GetHashCode());
+                return obj.Name.GetHashCode() + obj.Children.Sum(child => ((ITermNode)child).Name.GetHashCode());
             }
         }
     }

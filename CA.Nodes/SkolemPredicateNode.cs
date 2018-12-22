@@ -11,7 +11,7 @@ namespace AIRLab.CA.Nodes
     /// </summary>
     public class SkolemPredicateNode : PredicateNode
     {
-        public static readonly string NegationSymbol = "!"; 
+        public static readonly string NegationSymbol = "!";
         public bool IsNegate { get; set; }
 
         public SkolemPredicateNode(string name, bool negation, params INode[] childs) : base(name, childs)

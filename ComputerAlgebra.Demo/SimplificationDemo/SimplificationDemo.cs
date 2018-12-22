@@ -11,13 +11,13 @@ using AIRLab.CA.ExpressionConverters;
 
 namespace SimplificationDemo
 {
-    static class SimplificationDemo
+    internal static class SimplificationDemo
     {
         static void Main()
         {
             //Type the function you want to simplify
-            Expression<Func<double, double, double, double, double>> function = 
-                (x, y, z, u) => (x+42)/1 + y*0/(z-0) + 43 - Math.Pow(x, 0) * Math.Pow(u, 1)/(0+5);
+            Expression<Func<double, double, double, double, double>> function =
+                (x, y, z, u) => (x + 42) / 1 + y * 0 / (z - 0) + 43 - Math.Pow(x, 0) * Math.Pow(u, 1) / (0 + 5);
 
             var tree = Expressions2Tree.Parse(function);
             var simplifiedTree = ComputerAlgebra.Simplify(tree);

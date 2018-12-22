@@ -86,7 +86,7 @@ namespace AIRLab.CA.Tests.TreeTests
                 ComputerAlgebra.Differentiate(Expressions2Tree.Parse(expression.Body), variable: "x").ToString()
             );
         }
-        
+
         // (x^y) dif x => ((x^y)*(y/y))
         [TestMethod]
         public void DiffPowX()

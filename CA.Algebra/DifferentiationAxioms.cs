@@ -73,13 +73,13 @@ namespace AIRLab.CA.Algebra
                        new Divide<double>(
                            new ScalarProduct<double>((INode)z.D.Node.Clone(), new Dif<double>((INode)z.C.Node.Clone(), (VariableNode)z.E.Node.Clone())),
                            (INode)z.C.Node.Clone())))));
-            
+
             yield return Axiom
                 .New("d(lnU)/dx", StdTags.Differentiation, StdTags.Algebraic)
                 .Select(AnyA[ChildB[ChildC], ChildD])
                 .Where<Dif<double>, Ln, INode, VariableNode>()
                 .Mod(z => z.A.Replace(new Divide<double>(new Dif<double>(z.C.Node, z.D.Node), (INode)z.C.Node.Clone())));
-             
+
             yield return Axiom
                 .New("dx/dx", StdTags.Differentiation, StdTags.Deductive, StdTags.Algebraic)
                 .Select(AnyA[ChildB, ChildC])

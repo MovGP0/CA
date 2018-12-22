@@ -23,7 +23,7 @@ namespace AIRLab.CA.Operators
 
         public override Expression BuildExpression()
         {
-            var arguments = Expression.Parameter(typeof (IList));
+            var arguments = Expression.Parameter(typeof(IList));
             return Expression.Lambda(Expression.Convert(
                 _generator(
                     Expression.Invoke(Children[0].BuildExpression(), arguments)

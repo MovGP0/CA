@@ -14,6 +14,7 @@ namespace AIRLab.CA.Axioms
     public sealed class ComplexSelector : IComplexSelector
     {
         readonly List<BasicSelector> _selectors;
+
         public ComplexSelector(params ISelectClauseNode[] selectClauses)
         {
             _selectors = selectClauses.Select(z => new BasicSelector(z)).ToList();
@@ -46,15 +47,15 @@ namespace AIRLab.CA.Axioms
             if (_selectors.Count == 1)
             {
                 foreach (var e in _selectors[0].Select(roots[0]))
-                    yield return new SelectOutput(e,roots);
+                    yield return new SelectOutput(e, roots);
                 yield break;
             }
-            
+
             var results = new INode[roots.Length][];
             var enums = new IEnumerator<INode[]>[roots.Length];
             var current = 0;
             enums[0] = _selectors[0].Select(roots[0]).GetEnumerator();
-            
+
             while (true)
             {
                 var resp = enums[current].MoveNext();
@@ -64,11 +65,11 @@ namespace AIRLab.CA.Axioms
                     current--;
                     continue;
                 }
-                results[current]=enums[current].Current;
+                results[current] = enums[current].Current;
                 current++;
                 if (current == roots.Length)
                 {
-                    yield return Assemble(roots,results);
+                    yield return Assemble(roots, results);
                     current--;
                 }
                 else

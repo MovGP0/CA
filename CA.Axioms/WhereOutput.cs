@@ -20,7 +20,7 @@ namespace AIRLab.CA.Axioms
             var result = new INode[SelectResult.SelectedNodes.Count()];
             INode newRoot = null;
             for (var i = 0; i < SelectResult.SelectedNodes.Count(); i++)
-            { 
+            {
                 var node = SelectResult.SelectedNodes[i];
                 newRoot = node.CloneNode(path, newRoot, newRoots, SelectResult);
                 result[i] = newRoot;

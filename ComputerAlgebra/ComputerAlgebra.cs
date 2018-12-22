@@ -46,7 +46,7 @@ namespace AIRLab.CA
         /// <param name="index"></param>
         /// <param name="variable"></param>
         /// <returns></returns>
-        public static Expression Differentiate(Expression e, int index=0, String variable="")
+        public static Expression Differentiate(Expression e, int index = 0, String variable = "")
         {
             var node = Expressions2Tree.Parse(e);
             return Tree2Expression.Parse(Differentiate(node, index, variable));
@@ -70,7 +70,7 @@ namespace AIRLab.CA
 
             varIndex = NodeElementNames.GetVariableNodeNames().IndexOf(variable);
             varName = variable;
-            return AxiomsLibrary.ApplyAxioms(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());            
+            return AxiomsLibrary.ApplyAxioms(new Dif<double>(node, VariableNode.Make<double>(varIndex, varName)), rules.ToArray());
         }
 
         /// <summary>

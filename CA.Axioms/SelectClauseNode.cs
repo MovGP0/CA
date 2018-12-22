@@ -15,6 +15,7 @@ namespace AIRLab.CA.Axioms
         public LetterRecursionType Recursive { get; private set; }
         public IList<ISelectClauseNode> Children { get; private set; }
         public ISelectClauseNode Parent { get; set; }
+
         private SelectClauseNode(int letter, LetterRecursionType recursion, IEnumerable<ISelectClauseNode> children)
         {
             Letter = letter;
@@ -30,8 +31,8 @@ namespace AIRLab.CA.Axioms
         }
 
         public SelectClauseNode(int letter, LetterRecursionType recursion)
-            : this(letter,recursion,null)
-        {}
+            : this(letter, recursion, null)
+        { }
 
         public ISelectClauseNode this[params ISelectClauseNode[] args]
         {
