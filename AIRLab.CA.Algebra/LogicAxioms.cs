@@ -11,6 +11,18 @@ namespace AIRLab.CA.Algebra
         public static IEnumerable<IAxiom> Get()
         {
             yield return Axiom
+                .New("¬true ⇒ false", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection, StdTags.Simplification)
+                .Select(AnyA[B])
+                .Where<Not, Constant<bool>>(z => z.B.Value)
+                .Mod(z => z.A.Replace(new Constant<bool>(false)));
+
+            yield return Axiom
+                .New("¬false ⇒ true", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection, StdTags.Simplification)
+                .Select(AnyA[B])
+                .Where<Not, Constant<bool>>(z => !z.B.Value)
+                .Mod(z => z.A.Replace(new Constant<bool>(true)));
+
+            yield return Axiom
                 .New("&&0", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection, StdTags.Simplification)
                 .Select(AnyA[ChildB, ChildC])
                 .Where<And, Constant<bool>, INode>(z => !z.B.Value)
@@ -69,6 +81,12 @@ namespace AIRLab.CA.Algebra
                 .Select(A[ChildB, ChildC])
                 .Where<Equal, Constant<bool>, Constant<bool>>(z => z.B.Value != z.C.Value)
                 .Mod(z => z.A.Replace(new Constant<bool>(false)));
+
+            yield return Axiom
+                .New("¬(A Λ B) = (¬A) ∨ (¬B)", StdTags.Inductive, StdTags.Logic, StdTags.SafeResection, StdTags.Simplification)
+                .Select(A[B[ChildC, ChildD]])
+                .Where<Not, And, INode, INode>()
+                .Mod(z => z.A.Replace(new Or(new Not(z.C.Node), new Not(z.D.Node))));
         }
     }
 }
