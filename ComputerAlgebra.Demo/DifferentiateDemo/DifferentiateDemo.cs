@@ -11,7 +11,7 @@ using AIRLab.CA.ExpressionConverters;
 
 namespace DifferentiateDemo
 {
-    class DifferentiateDemo
+    static class DifferentiateDemo
     {
         static void Main()
         {

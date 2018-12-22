@@ -7,7 +7,7 @@ using AIRLab.CA.Groups;
 
 namespace AIRLab.CA.Groups
 {
-    public class LogicExpressions
+    public abstract class LogicExpressions
     {
         public static BooleanGroup K(params int[] args)
         {

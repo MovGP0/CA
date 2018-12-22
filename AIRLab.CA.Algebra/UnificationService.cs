@@ -13,7 +13,7 @@ namespace AIRLab.CA.Algebra
     /// <summary>
     /// Service for operation of unification. Unification rule it's a element of dictionary, where key is "Original node" and value is "Replaced node" or "Node after unification"
     /// </summary>
-    public class UnificationService
+    public static class UnificationService
     {
         /// <summary>
         /// Unification with passed rules

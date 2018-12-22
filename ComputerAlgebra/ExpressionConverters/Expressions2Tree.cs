@@ -13,7 +13,7 @@ using AIRLab.CA.Tree.Tools;
 
 namespace AIRLab.CA.ExpressionConverters
 {
-    public class Expressions2Tree
+    public static class Expressions2Tree
     {
         public static INode Parse(Expression e)
         {

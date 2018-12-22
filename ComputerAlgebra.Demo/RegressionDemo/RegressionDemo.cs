@@ -13,7 +13,7 @@ using AIRLab.CA.Nodes;
 
 namespace CADemo
 {
-    class RegressionDemo
+    static class RegressionDemo
     {
         private const double NoiseLevel = 0.1;
         private static readonly Random RandomNumberGenerator = new Random();

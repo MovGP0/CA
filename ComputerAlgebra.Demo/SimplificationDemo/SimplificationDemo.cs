@@ -11,7 +11,7 @@ using AIRLab.CA.ExpressionConverters;
 
 namespace SimplificationDemo
 {
-    class SimplificationDemo
+    static class SimplificationDemo
     {
         static void Main()
         {
