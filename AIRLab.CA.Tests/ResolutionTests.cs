@@ -1,10 +1,4 @@
-﻿// ComputerAlgebra Library
-//
-// Copyright © Medvedev Igor, Okulovsky Yuri, Borcheninov Jaroslav, Johann Dirry, 2014
-// imedvedev3@gmail.com, yuri.okulovsky@gmail.com, yariksuperman@gmail.com, johann.dirry@aon.at
-//
-
-using System.Linq;
+﻿using System.Linq;
 using System.Linq.Expressions;
 using AIRLab.CA.Algebra;
 using AIRLab.CA.ExpressionConverters;

@@ -1,0 +1,50 @@
+<#@ template language="C#" #>
+<#@ output extension=".cs" encoding="utf-8" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Text" #>
+<# var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; #>
+using System;
+using AIRLab.CA.Nodes;
+
+namespace AIRLab.CA.Axioms
+{
+
+    public class SelectWhereAxiom : ISelectWhereAxiom
+    {
+        public ISelectAxiom SelectAxiom { get; private set; }
+        public SelectWhereAxiom(ISelectAxiom selectAxiom)
+        {
+            SelectAxiom = selectAxiom;
+        }
+    }
+
+<# for(int i = 0; i <= 12; i++) 
+{
+	var builder = new StringBuilder();
+
+	for(int j = 0; j <= i; j++) 
+	{
+		builder.Append("T");
+		builder.Append(j);
+		if(j != i) 
+		{
+			builder.Append(", ");
+		}
+	}
+
+	var T = builder.ToString();
+#>
+    public class SelectWhereAxiom<<#= T #>> : SelectWhereAxiom, ISelectWhereAxiom<<#= T #>>
+<#     for(int j = 0; j <= i; j++) { #>
+        where T<#= j #> : INode 
+<#     } #>
+    {
+        public Func<ISelectOutput, ITypizedNodeArray<<#= T #>>> Invoke { get; private set; }
+
+        public SelectWhereAxiom(ISelectAxiom selectAxiom, Func<ISelectOutput, ITypizedNodeArray<<#= T #>>> where) : base(selectAxiom)
+        {
+            Invoke = where;
+        }
+    }
+<# } #>
+}

@@ -1,0 +1,35 @@
+<#@ template language="C#" #>
+<#@ output extension=".cs" encoding="utf-8" #>
+<#@ import namespace="System" #>
+<# var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; #>
+namespace AIRLab.CA.Axioms
+{
+    public class SelectClauseWriter 
+    {
+<# for(int i = 0; i <= 12; i++) { #>
+        public static SelectClauseNode Any<#= letters[i] #>
+        {
+            get
+            {
+                return new SelectClauseNode(<#= i #>, LetterRecursionType.Subtree);
+            }
+        }
+
+        public static SelectClauseNode Child<#= letters[i] #>
+        {
+            get
+            {
+                return new SelectClauseNode(<#= i #>, LetterRecursionType.Children);
+            }
+        }
+
+        public static SelectClauseNode <#= letters[i] #>
+        {
+            get
+            {
+                return new SelectClauseNode(<#= i #>, LetterRecursionType.No);
+            }
+        }
+<# } #>
+    }
+}

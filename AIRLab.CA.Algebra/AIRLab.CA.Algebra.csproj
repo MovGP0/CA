@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Roslynator.Analyzers" Version="2.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CodeFixes" Version="2.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AIRLab.CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj" />
+    <ProjectReference Include="..\AIRLab.CA.Axioms\AIRLab.CA.Axioms.csproj" />
+    <ProjectReference Include="..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj" />
+    <ProjectReference Include="..\AIRLab.CA.Nodes\AIRLab.CA.Nodes.csproj" />
+    <ProjectReference Include="..\AIRLab.CA.Operators\AIRLab.CA.Operators.csproj" />
+  </ItemGroup>
+
+</Project>

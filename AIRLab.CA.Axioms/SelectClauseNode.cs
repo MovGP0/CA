@@ -1,0 +1,48 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace AIRLab.CA.Axioms
+{
+    public class SelectClauseNode : ISelectClauseNode
+    {
+        public int Letter { get; }
+        public LetterRecursionType Recursive { get; private set; }
+        public IList<ISelectClauseNode> Children { get; private set; }
+        public ISelectClauseNode Parent { get; set; }
+
+        private SelectClauseNode(int letter, LetterRecursionType recursion, IEnumerable<ISelectClauseNode> children)
+        {
+            Letter = letter;
+            Recursive = recursion;
+            Children = children?.ToList() ?? new List<ISelectClauseNode>();
+
+            foreach (var c in Children)
+            {
+                c.Parent = this;
+            }
+
+            Parent = null;
+        }
+
+        public SelectClauseNode(int letter, LetterRecursionType recursion)
+            : this(letter, recursion, null)
+        { }
+
+        public ISelectClauseNode this[params ISelectClauseNode[] args]
+        {
+            get
+            {
+                return new SelectClauseNode(Letter, Recursive, args);
+            }
+        }
+
+        public IEnumerable<ISelectClauseNode> GetList()
+        {
+            yield return this;
+            foreach (var n in Children.SelectMany(c => c.GetList()))
+            {
+                yield return n;
+            }
+        }
+    }
+}
