@@ -25,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -50,12 +51,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AIRLab.CA.Algebra\AIRLab.CA.Algebra.csproj">
-      <Project>{5B76653D-21BB-4B0E-9DE5-A6882CCE027C}</Project>
-      <Name>AIRLab.CA.Algebra</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
-      <Project>{2ADA93D8-96C3-404F-A7CE-EF0315FD8A93}</Project>
+    <ProjectReference Include="..\..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
+      <Project>{781bd5e0-28cc-474e-ab5f-96263032dd34}</Project>
       <Name>AIRLab.CA.Nodes.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ComputerAlgebra\AIRLab.CA.csproj">

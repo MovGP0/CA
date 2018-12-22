@@ -1,0 +1,87 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="SelectAxiomInterfaceExtensions.tt" />
+    <None Remove="SelectClauseWriter.tt" />
+    <None Remove="SelectWhereAxiom.tt" />
+    <None Remove="SelectWhereAxiomExtensions.tt" />
+    <None Remove="TypizedDecorArray.tt" />
+    <None Remove="TypizedNodeArray.tt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="SelectAxiomInterfaceExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectAxiomInterfaceExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectClauseWriter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectClauseWriter.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectWhereAxiom.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectWhereAxiom.cs</LastGenOutput>
+    </Content>
+    <Content Include="SelectWhereAxiomExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SelectWhereAxiomExtensions.cs</LastGenOutput>
+    </Content>
+    <Content Include="TypizedDecorArray.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypizedDecorArray.cs</LastGenOutput>
+    </Content>
+    <Content Include="TypizedNodeArray.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TypizedNodeArray.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Nodes\AIRLab.CA.Nodes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="SelectAxiomInterfaceExtensions.cs">
+      <DependentUpon>SelectAxiomInterfaceExtensions.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SelectClauseWriter.cs">
+      <DependentUpon>SelectClauseWriter.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SelectWhereAxiom.cs">
+      <DependentUpon>SelectWhereAxiom.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="SelectWhereAxiomExtensions.cs">
+      <DependentUpon>SelectWhereAxiomExtensions.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="TypizedDecorArray.cs">
+      <DependentUpon>TypizedDecorArray.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="TypizedNodeArray.cs">
+      <DependentUpon>TypizedNodeArray.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

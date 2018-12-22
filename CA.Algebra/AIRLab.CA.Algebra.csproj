@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Axioms\AIRLab.CA.Axioms.csproj" />
+    <ProjectReference Include="..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Nodes\AIRLab.CA.Nodes.csproj" />
+    <ProjectReference Include="..\CA.Operators\AIRLab.CA.Operators.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -25,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -62,28 +63,28 @@
     <Compile Include="TreeTests\Tests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AIRLab.CA.Algebra\AIRLab.CA.Algebra.csproj">
-      <Project>{5B76653D-21BB-4B0E-9DE5-A6882CCE027C}</Project>
+    <ProjectReference Include="..\CA.Algebra\AIRLab.CA.Algebra.csproj">
+      <Project>{e32d4dad-aacb-48e7-8f16-0914f32adbeb}</Project>
       <Name>AIRLab.CA.Algebra</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AIRLab.CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj">
-      <Project>{75B4BF2F-A84B-4847-8264-472AA8076AFF}</Project>
+    <ProjectReference Include="..\CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj">
+      <Project>{9c87ca91-e064-48e0-b27a-16762855bf37}</Project>
       <Name>AIRLab.CA.Axioms.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AIRLab.CA.Axioms\AIRLab.CA.Axioms.csproj">
-      <Project>{C85B2FB7-9F28-4591-AE92-E084FA3FEFBA}</Project>
+    <ProjectReference Include="..\CA.Axioms\AIRLab.CA.Axioms.csproj">
+      <Project>{2e1b4d55-a7a6-44ca-8860-4d769ab41236}</Project>
       <Name>AIRLab.CA.Axioms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
-      <Project>{2ADA93D8-96C3-404F-A7CE-EF0315FD8A93}</Project>
+    <ProjectReference Include="..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
+      <Project>{781bd5e0-28cc-474e-ab5f-96263032dd34}</Project>
       <Name>AIRLab.CA.Nodes.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AIRLab.CA.Nodes\AIRLab.CA.Nodes.csproj">
-      <Project>{CC9A3A57-9542-4599-9CAF-6A7FCF2B3098}</Project>
+    <ProjectReference Include="..\CA.Nodes\AIRLab.CA.Nodes.csproj">
+      <Project>{8a40e8fd-ec3f-4461-a0a1-00eb45160e5d}</Project>
       <Name>AIRLab.CA.Nodes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AIRLab.CA.Operators\AIRLab.CA.Operators.csproj">
-      <Project>{5B0791DC-7AA3-4044-AF9F-FA81C9688692}</Project>
+    <ProjectReference Include="..\CA.Operators\AIRLab.CA.Operators.csproj">
+      <Project>{a0ddb1df-a2d5-49f3-950b-17a91239a756}</Project>
       <Name>AIRLab.CA.Operators</Name>
     </ProjectReference>
     <ProjectReference Include="..\ComputerAlgebra\AIRLab.CA.csproj">

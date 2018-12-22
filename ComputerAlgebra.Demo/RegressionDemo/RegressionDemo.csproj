@@ -25,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -50,13 +51,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AIRLab.CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
-      <Project>{2ADA93D8-96C3-404F-A7CE-EF0315FD8A93}</Project>
+    <ProjectReference Include="..\..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj">
+      <Project>{781bd5e0-28cc-474e-ab5f-96263032dd34}</Project>
       <Name>AIRLab.CA.Nodes.Contracts</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AIRLab.CA.Nodes\AIRLab.CA.Nodes.csproj">
-      <Project>{CC9A3A57-9542-4599-9CAF-6A7FCF2B3098}</Project>
+    <ProjectReference Include="..\..\CA.Nodes\AIRLab.CA.Nodes.csproj">
+      <Project>{8a40e8fd-ec3f-4461-a0a1-00eb45160e5d}</Project>
       <Name>AIRLab.CA.Nodes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CA.Operators\AIRLab.CA.Operators.csproj">
+      <Project>{a0ddb1df-a2d5-49f3-950b-17a91239a756}</Project>
+      <Name>AIRLab.CA.Operators</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ComputerAlgebra\AIRLab.CA.csproj">
       <Project>{4C4EA496-89A1-4FE1-B18C-28E2577A2151}</Project>
