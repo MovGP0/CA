@@ -1,6 +1,6 @@
 ﻿namespace AIRLab.CA.Axioms
 {
-    public class SelectClauseWriter 
+    public abstract class SelectClauseWriter
     {
         public static SelectClauseNode AnyA
         {
@@ -25,6 +25,7 @@
                 return new SelectClauseNode(0, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyB
         {
             get
@@ -48,6 +49,7 @@
                 return new SelectClauseNode(1, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyC
         {
             get
@@ -71,6 +73,7 @@
                 return new SelectClauseNode(2, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyD
         {
             get
@@ -94,6 +97,7 @@
                 return new SelectClauseNode(3, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyE
         {
             get
@@ -117,6 +121,7 @@
                 return new SelectClauseNode(4, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyF
         {
             get
@@ -140,6 +145,7 @@
                 return new SelectClauseNode(5, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyG
         {
             get
@@ -163,6 +169,7 @@
                 return new SelectClauseNode(6, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyH
         {
             get
@@ -186,6 +193,7 @@
                 return new SelectClauseNode(7, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyI
         {
             get
@@ -209,6 +217,7 @@
                 return new SelectClauseNode(8, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyJ
         {
             get
@@ -232,6 +241,7 @@
                 return new SelectClauseNode(9, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyK
         {
             get
@@ -255,6 +265,7 @@
                 return new SelectClauseNode(10, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyL
         {
             get
@@ -278,6 +289,7 @@
                 return new SelectClauseNode(11, LetterRecursionType.No);
             }
         }
+
         public static SelectClauseNode AnyM
         {
             get
@@ -301,5 +313,6 @@
                 return new SelectClauseNode(12, LetterRecursionType.No);
             }
         }
+
     }
 }
