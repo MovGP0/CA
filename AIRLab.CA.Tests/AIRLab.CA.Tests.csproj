@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="nunit" Version="3.11.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.12.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Roslynator.Analyzers" Version="2.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Roslynator.CodeFixes" Version="2.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CA.Algebra\AIRLab.CA.Algebra.csproj" />
+    <ProjectReference Include="..\CA.Axioms.Contracts\AIRLab.CA.Axioms.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Axioms\AIRLab.CA.Axioms.csproj" />
+    <ProjectReference Include="..\CA.Nodes.Contracts\AIRLab.CA.Nodes.Contracts.csproj" />
+    <ProjectReference Include="..\CA.Nodes\AIRLab.CA.Nodes.csproj" />
+    <ProjectReference Include="..\CA.Operators\AIRLab.CA.Operators.csproj" />
+    <ProjectReference Include="..\CA\AIRLab.CA.csproj" />
+  </ItemGroup>
+
+</Project>
